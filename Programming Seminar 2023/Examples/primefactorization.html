@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Prime factorization</title>
+    <style>
+      body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" name="input" id="input">
+    <p id="output"></p>
+    <script>
+      document.getElementById('input').addEventListener('change', function(event) {
+        let number = BigInt(event.target.value);
+        let factor = 2n;
+        let factors = [];
+        while (factor * factor <= number) {
+          if (number % factor === 0n) {
+            factors.push(factor);
+            number = number / factor;
+          } else {
+            if (factor === 2n) {
+              factor = factor + 1n;
+            } else {
+              factor = factor + 2n;
+            }
+          }
+        }
+        factors.push(number);
+        document.getElementById('output').textContent = factors.join(', ');
+      });
+    </script>
+  </body>
+</html>

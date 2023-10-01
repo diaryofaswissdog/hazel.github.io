@@ -1,0 +1,10 @@
+This
+is
+an
+example
+file
+for
+the
+file
+processing
+example.

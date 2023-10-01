@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <style>
+      body {
+        padding: 20px;
+      }
+
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+      // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial
+      let canvas = document.getElementById('canvas');
+      let context = canvas.getContext('2d');
+
+      // Scaling for high-resolution displays
+      if (window.devicePixelRatio > 1) {
+        canvas.style.width = canvas.width + "px";
+        canvas.style.height = canvas.height + "px";
+        canvas.width = canvas.width * window.devicePixelRatio;
+        canvas.height = canvas.height * window.devicePixelRatio;
+        context.scale(window.devicePixelRatio, window.devicePixelRatio);
+      }
+
+      // Rectangles
+      context.strokeStyle = 'blue';
+      context.strokeRect(50, 100, 200, 250); // x, y, width, height
+      context.fillStyle = 'rgba(200, 0, 20, 0.6)'; // red, green, blue, alpha
+      context.fillRect(100, 50, 250, 200);
+      context.clearRect(200, 150, 100, 50);
+
+      // Path: Triangle
+      context.strokeStyle = '#009933';
+      context.lineWidth = 8;
+      context.beginPath();
+      context.moveTo(400, 350); // x, y
+      context.lineTo(550, 150); // x, y
+      context.lineTo(500, 350);
+      context.closePath();
+      context.stroke();
+      context.fillStyle = 'rgba(0, 100, 150, 0.4)';
+      context.fill();
+
+      // Path: Circle
+      context.lineWidth = 4;
+      context.strokeStyle = 'black';
+      context.beginPath();
+      context.arc(450, 100, 50, 0, 2 * Math.PI); // x, y, radius, starting angle, ending angle (both in radian)
+      context.stroke();
+
+      // Text
+      context.font = '20px Arial';
+      context.fillStyle = 'gray';
+      context.fillText('Hello', 400, 210); // text, x, y
+    </script>
+  </body>
+</html>

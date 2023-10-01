@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Template</title>
+    <style>
+      body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">Hello, World!</div>
+    <button id="button">Click me!</button>
+    <script>
+      function clickHandler() {
+    document.getElementById('main').innerText = 'This is cool!';
+      }
+    document.getElementById('button').onclick = clickHandler;
+    </script>
+  </body>
+</html>

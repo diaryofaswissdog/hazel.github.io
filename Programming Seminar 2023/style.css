@@ -1,0 +1,29 @@
+#navbar{ 
+    background-color: #C5E0E7;
+    Position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    font-family: 'Times New Roman';
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px; }
+    #navbar a {
+    text-decoration: none;
+    font-size: 30px;
+    color: whitesmoke;
+    font-weight:bold;
+    font-style: italic;
+
+    
+
+    }
+a:hover{
+    color: #814141;
+    text-decoration: underline;
+    ;
+}
+body {
+    margin: 60px;
+}

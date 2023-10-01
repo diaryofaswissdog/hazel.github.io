@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>File processing</title>
+    <style>
+      body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" name="upload" id="upload" accept="text/plain,.txt">
+    <script>
+      function downloadFile(name, content) {
+        let element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+        element.setAttribute('download', name);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+      }
+
+      function processFile(name, content) {
+        console.log('Processing the file:', name);
+        let lines = content.split('\n');
+        let sortedLines = lines.sort();
+        let newContent = sortedLines.join('\n');
+        let lastIndex = name.lastIndexOf('.');
+        let newName = name.substring(0, lastIndex) + ' sorted.txt';
+        downloadFile(newName, newContent);
+      }
+
+      function uploadHandler() {
+        let file = this.files[0];
+        let fileReader = new FileReader();
+        fileReader.onload = function() {
+          processFile(file.name, fileReader.result);
+        }
+        fileReader.readAsText(file);
+      }
+
+      document.getElementById('upload').addEventListener('change', uploadHandler);
+    </script>
+  </body>
+</html>
